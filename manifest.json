@@ -1,0 +1,24 @@
+{
+  "name": "Image Extractor",
+  "description": "Extract Images From Web Pages",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "htmlFile.html",
+    "default_icon": "icon.png"
+  },
+    "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "/scripts/content.js"
+      ]
+    }
+  ]
+}
