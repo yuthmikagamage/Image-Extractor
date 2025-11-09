@@ -7,7 +7,7 @@
     "default_popup": "htmlFile.html",
     "default_icon": "icon.png"
   },
-    "permissions": [
+  "permissions": [
     "activeTab",
     "scripting"
   ],

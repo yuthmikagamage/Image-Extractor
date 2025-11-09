@@ -1,10 +1,15 @@
-document.getElementById("extractBtn").addEventListener("click", async () => {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "extractImages") {
+    const images = document.querySelectorAll("img");
+    const imageUrls = [];
 
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: extractImages,
-  });
+    images.forEach((img) => {
+      if (img.src) {
+        imageUrls.push(img.src);
+      }
+    });
+
+    sendResponse({ imageUrls: imageUrls });
+  }
+  return true;
 });
-
-function extractImages() {}
